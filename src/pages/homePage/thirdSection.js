@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 
 const options = [
   "personal attention",
@@ -62,28 +61,17 @@ function ThirdSection() {
     <div className="items-center min-h-screen py-16 bg-white">
       <div className="w-[70%] max-w-[1000px] mx-auto flex flex-col">
         <div className="flex justify-evenly mb-10 space-x-16 w-full h-max relative">
-          {/* {options.map((item, index) => (
-            <button
-              key={index}
-              className={`text-black relative ${
-                selectedOption === index ? "text-blue-500" : "text-black"
-              }`}
-              onClick={() => handleClick(index)}
-            >
-              {item}
-              {selectedOption === index && (
-                <div
-                  className="absolute left-0 bottom-0 w-full h-1 bg-blue-500 transition-transform duration-300"
-                  style={borderPosition}
-                />
-              )}
-            </button>
-          ))} */}
           <SwitchTabs data={options} onTabChange={onTabChange} />
         </div>
       </div>
       <div className="flex w-[1250px] mx-auto justify-between pr-32 items-center rowww">
-        <Image src="./thirdSection.svg" height={600} width={600} />
+        <img
+          src="./thirdSection.svg"
+          height={600}
+          width={600}
+          alt="thirdSection"
+          className="my-image"
+        />
 
         <div className="flex flex-col">
           <div className="text-4xl text-black font-bold">focused</div>

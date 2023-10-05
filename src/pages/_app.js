@@ -1,5 +1,14 @@
-import '@/styles/globals.css'
+import { Provider } from "react-redux";
+// Adjust the path to point to your Redux store
+import "@/styles/globals.css";
+import { store } from "@/store/store";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
+
+export default App;

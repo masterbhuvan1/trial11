@@ -5,8 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import { IoIosArrowForward } from "react-icons/io";
 
-// import SubItemCard from "./subItemCard";
-import subItem from "./infoHeader";
+import subItem from "../../utils/infoHeader";
 const items = ["courses", "study material", "results", "more"];
 function BooksCard(props) {
   return (
@@ -42,7 +41,12 @@ function SubItemCard(props) {
       ) : (
         <div>
           {props.data.svg !== "null" && (
-            <Image src={props.data.svg} height={40} width={40} />
+            <Image
+              src={props.data.svg}
+              height={40}
+              width={40}
+              alt="SubItemCard image"
+            />
           )}
         </div>
       )}
@@ -68,7 +72,6 @@ function Header() {
   const [activeSubItem, setActiveSubItem] = useState([false, false]);
   const [foundItem, setFoundItem] = useState(null);
   const [foundSubItem, setFoundSubItem] = useState(null);
-  const [foundSmItem, setFoundSMItem] = useState(null);
 
   const openMobileMenu = () => {
     setMobileMenu(true);
@@ -212,7 +215,7 @@ function Header() {
             </ul>
           </div>
           <div className="flex mx-7">
-            <Image src="./call.svg" width={50} height={50} />
+            <Image src="./call.svg" width={50} height={50} alt="call.svg" />
             <div className="flex flex-col">
               <div className="text-yellow-300">need help? talk to experts</div>
               <div className="text-yellow-300">1800-419-427</div>

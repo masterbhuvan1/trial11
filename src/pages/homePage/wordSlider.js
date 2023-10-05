@@ -21,7 +21,7 @@ const WordSlider = () => {
   }, []);
 
   return (
-    <div className="slider-container h-24 text-yellow-400 flex items-center justify-start text-7xl font-bold">
+    <div className="slider-container h-24 max-md:h-12 max-md:pl-3 max-md:text-5xl text-yellow-400 flex items-center justify-start text-7xl font-bold">
       <div className={animating ? "word-entering" : "word-exiting"}>
         {words[currentIndex]}
       </div>

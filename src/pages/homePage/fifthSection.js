@@ -62,22 +62,65 @@ function LevelShower(props) {
   );
 }
 function Card(props) {
+  const check = props.data.video;
+
+  if (check) {
+    return (
+      <div className="flex mb-12 mx-auto shadow-lg   flex-col px-5 flex-shrink-0  my-4 rounded-2xl w-1/4 bg-white text-black ">
+        <Image
+          src={props.data.image}
+          // className=" rounded-full"
+          height={120}
+          width={200}
+          className="  mt-6  w-[100%] h-[100%]"
+          fit="contain"
+          alt="cards svg"
+        />
+        <div className=" ml-4  text-start">{props.data.review}</div>
+
+        <Image
+          src="reviews/invertedCommas2.svg"
+          height={52}
+          width={40}
+          alt="inverted commas "
+          className=" w-[15%] bottom-12 opacity-75 left-72  relative"
+        />
+        <div className=" flex  items-center ">
+          <div className="flex z-50 ml-4  flex-col flex-grow">
+            <div className=" font-bold">{props.data.name}</div>
+            <div className="  font-medium opacity-50">{props.data.place}</div>
+          </div>
+          <div className="  text-orange-400">{props.data.batch}</div>
+        </div>
+      </div>
+    ); // or you can return some default component or <></> for nothing.
+  }
+
   return (
-    <div className="flex mb-12 shadow-lg max-w-screen-xl flex-col px-5 flex-shrink-0 py-8 my-4 rounded-2xl w-1/4 bg-white text-black ">
+    <div className="flex mb-12 shadow-lg gap-5  flex-col px-5 flex-shrink-0 py-8 my-4 rounded-2xl w-1/4 bg-white text-black ">
       <div className="flex  items-center gap-6 px-7 ">
         <Image
           src={props.data.image}
           // className=" rounded-full"
           height={120}
           width={120}
+          className=" w-auto h-auto "
+          fit="contain"
+          alt="cards svg"
         />
         <div className="flex z-50  flex-col flex-grow">
-          <div>{props.data.name}</div>
-          <div>{props.data.place}</div>
-          <div>{props.data.batch}</div>
+          <div className=" font-bold mb-3">{props.data.name}</div>
+          <div className="  font-medium opacity-50">{props.data.place}</div>
+          <div className="  text-orange-400">{props.data.batch}</div>
         </div>
       </div>
-      <Image src="reviews/invertedcommas.svg" height={52} width={40} />
+      <Image
+        src="reviews/invertedcommas.svg"
+        height={52}
+        width={40}
+        alt="inverted commas"
+        className=" w-[15%]"
+      />
       <div className="  text-start">{props.data.review}</div>
     </div>
   );
@@ -96,7 +139,7 @@ function Reviews() {
         setScrollPos((prev) => prev + 4);
         setLineLength(48);
       }
-    }, 3000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [scrollPos]);
@@ -107,7 +150,7 @@ function Reviews() {
         <LevelShower data={lineLength} />
       </div>
       <div className=" flex relative top-40 flex-col justify-center items-center ">
-        <div className="overflow-hidden h-auto relative w-5/6">
+        <div className="overflow-hidden w-screen  relative w-5/">
           <div
             className="flex gap-8 transition-transform duration-1000"
             style={{ transform: `translateX(-${scrollPos * 20}%)` }}
@@ -132,7 +175,7 @@ function FifthSection() {
             toppers{" "}
           </div>
         </div>
-        <Image src="./topper.svg" height={400} width={600} />
+        <img src="./topper.svg" height={400} width={600} alt="topper.svg" />
       </div>
       <Reviews />
     </div>

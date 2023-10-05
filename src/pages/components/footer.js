@@ -18,6 +18,7 @@ function Footer() {
               width="250"
               height="250"
               alt="brand logo"
+              className="my-image-footer"
             />
             <div className="md:w-[80%] mt-6 flex flex-col gap-4">
               <div className="flex flex-row gap-4">

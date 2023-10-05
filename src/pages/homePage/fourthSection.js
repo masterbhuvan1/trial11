@@ -11,16 +11,9 @@ const courses = [
     id: 1,
   },
   {
-    id: 1,
+    id: 2,
   },
 
-  {
-    id: 2,
-    name: "IIT JEE Rankers Course",
-    about: "full course coverage revision and test series",
-    price: "starting at 1660/month",
-    svg: "./courses/image1.svg",
-  },
   {
     id: 3,
     name: "IIT JEE Rankers Course",
@@ -30,21 +23,21 @@ const courses = [
   },
   {
     id: 4,
+    name: "IIT JEE Rankers Course",
+    about: "full course coverage revision and test series",
+    price: "starting at 1660/month",
+    svg: "./courses/image1.svg",
+  },
+  {
+    id: 5,
     name: "High Order Thinking Skills",
     about: "full course coverage revision and test series",
     price: "starting at 1660/month",
     svg: "./courses/image2.svg",
   },
   {
-    id: 5,
-    name: "IIT JEE Rankers Course",
-    about: "full course coverage revision and test series",
-    price: "starting at 1660/month",
-    svg: "./courses/image3.svg",
-  },
-  {
     id: 6,
-    name: "High Order Thinking Skills",
+    name: "IIT JEE Rankers Course",
     about: "full course coverage revision and test series",
     price: "starting at 1660/month",
     svg: "./courses/image3.svg",
@@ -84,29 +77,44 @@ const courses = [
     price: "starting at 1660/month",
     svg: "./courses/image3.svg",
   },
+  {
+    id: 12,
+    name: "High Order Thinking Skills",
+    about: "full course coverage revision and test series",
+    price: "starting at 1660/month",
+    svg: "./courses/image3.svg",
+  },
 ];
 function Card(props) {
   // console.log(props.data.id);
   return (
     <div
       className={`flex-shrink-0 justify-start max-w-screen-xl text-start py-7 h-full ${
-        props.data.id == 1 || props.data.id == 0
+        props.data.id == 1 || props.data.id == 0 || props.data.id == 2
           ? " w-96 bg-blue-200  "
           : "bg-white"
       }  rounded-2xl mx-4 p-4 flex flex-col items-center`}
     >
       <div className="">
-        {props.data.id != 0 && props.data.id != 1 && (
-          <Image
+        {props.data.id != 0 && props.data.id != 1 && props.data.id != 2 && (
+          <img
             src={props.data?.svg}
             height={278}
             width={368}
-            className=" border-2 border-blue-200"
+            // Ensures the image maintains its aspect ratio
+            className="border-2 w-auto h-auto border-blue-200"
+            alt="cards svg"
           />
         )}
         <div className="relative bottom-4 left-6">
-          {props.data.id != 0 && props.data.id != 1 && (
-            <Image src="./courses/std.svg" height={29} width={142} />
+          {props.data.id != 0 && props.data.id != 1 && props.data.id != 2 && (
+            <Image
+              src="./courses/std.svg"
+              height={29}
+              width={142}
+              className=" w-[40%] h-auto" // Ensures the image maintains its aspect ratio
+              alt="courses.svg"
+            />
           )}
         </div>
       </div>
@@ -119,7 +127,7 @@ function Card(props) {
       <div className="mt-3 flex justify-between items-center space-x-20">
         {" "}
         <div className="text-black mb-2">{props.data?.price}</div>
-        {props.data.id != 0 && props.data.id != 1 && (
+        {props.data.id != 0 && props.data.id != 1 && props.data.id != 2 && (
           <div className=" flex text-blue-500">
             <div className=" text-xs text-blue-500 text-center  cursor-pointer">
               See More{" "}
@@ -130,9 +138,6 @@ function Card(props) {
       </div>
     </div>
   );
-}
-function trial() {
-  const [activeDash, setDashCard] = useState(0);
 }
 
 function Courses() {
@@ -150,7 +155,7 @@ function Courses() {
         setScrollPos((prev) => prev + 2);
         setDashCard((activeDash + 1) % 5);
       }
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [scrollPos]);
@@ -205,7 +210,14 @@ function FourthSection() {
       <div className="w-full py-10 min-h-screen overflow-hidden mx-auto bg-blue-200 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center">
           <div className="flex items-center mb-10">
-            <Image src="fire.svg" height={96} width={96} />
+            <img
+              src="fire.svg"
+              className=" w-auto h-auto"
+              height={96}
+              width={96}
+              fit="contain"
+              alt=" fire.svg"
+            />
             <div className="mt-8 text-6xl font-bold text-black">
               news and
               <span className="text-6xl font-bold text-blue-400">trending</span>
